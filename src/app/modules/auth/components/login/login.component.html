@@ -1,0 +1,36 @@
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-in">
+      <form [formGroup]="formLogIn" (ngSubmit)="login()">
+        <h2>Bienvenido </h2>
+        <div class="form-floating mb-3">
+          <input type="text" formControlName="userName" class="form-control">
+          <label>Usuario</label>
+          <div class="alert alert-danger mt-2" [hidden]="userNameEmpty.valid || userNameEmpty.pristine">
+            El campo del nombre del usuario está vacío
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" formControlName="passwordUser" class="form-control" >
+          <label>Contraseña</label>
+          <div class="alert alert-danger mt-2" [hidden]="passwordEmpty.valid || passwordEmpty.pristine">
+            <span *ngIf="passwordEmpty.errors?.['required']">La contraseña está vacía</span>
+          </div>
+        </div>
+        
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary btn-lg" [disabled]="formLogIn.invalid">Ingresar</button>
+        </div>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-right">
+          <a href="#" class="logo">
+            <img src="../../../assets/img/logo.png" alt="Ferretools Logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,23 @@
+
+*{
+    background-color: #291162;
+}
+
+.navbar{
+    background-color: #291162 ;
+    height: 58px;
+    /* text-align: center; */
+}
+.logo img {
+    width: 15%;
+    height: auto;
+    margin-right: 10px;
+  }
+.navbar .container-fluid h1{
+    color: white;
+    text-align: center;
+    font-size: 3vw; 
+    margin: 0; 
+    padding: 10px; 
+
+}
