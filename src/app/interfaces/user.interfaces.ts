@@ -8,4 +8,4 @@ export interface User{
 }
 
 export type UserEdit= Pick<User, 'nameUser'|'lastNameUser'|'userName'|'userRole'>;
-export type UserLoginFields= Pick<User, 'userName'|'passwordUser'|'userRole'>;
+export type UserLoginFields= Pick<User, 'userName'|'passwordUser'>;
