@@ -20,7 +20,9 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "allowedCommonJsDependencies": ["apexcharts"],
+            "allowedCommonJsDependencies": [
+              "apexcharts"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -99,11 +101,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "ea199895-57c0-4991-b32e-3d61a646a32d"
+    "analytics": "ea199895-57c0-4991-b32e-3d61a646a32d",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
