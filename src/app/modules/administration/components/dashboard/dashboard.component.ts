@@ -1,13 +1,9 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardCardsService, ICardsMenu } from '../../../../core/services/dashboard-cards.service';
 import { Products } from 'src/app/interfaces/products.interfaces';
 import { ProductsService } from 'src/app/services/products.service';
-import { ModalUserComponent } from 'src/app/shared/modal-user/modal-user.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalProductsComponent } from 'src/app/shared/modal-products/modal-products.component';
-
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,24 +18,22 @@ export class DashboardComponent implements OnInit {
   listProducts: Products[] = [];
 
   constructor(private _dashboardService: DashboardCardsService,
-    private _productService: ProductsService,
-    private router: Router) {
+              private _productService: ProductsService,
+              private router: Router) {
     this.listCards = _dashboardService.getDashboardCards();
   }
 
   ngOnInit(): void {
     this.getProducts();
-
     this._productService.dataModifiedTable.subscribe(() => {
-      this.getProducts()
-    })
-
+      this.getProducts();
+    });
   }
 
   getProducts() {
     this._productService.getProducts().subscribe(data => {
       this.listProducts = (data as any).productsList;
-    })
+    });
   }
 
   selectModalCard(card: ICardsMenu) {
@@ -53,11 +47,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  onKeyDown(event: KeyboardEvent, item?: any, action?: string) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (action === 'edit' && item) {
+        this.editProduct('ProductEditModal', item);
+      } else if (action === 'delete' && item) {
+        this.deleteProduct(item.idProduct);
+      } else {
+        this.selectModalCard(item);
+      }
+    }
+  }
 
-  //tables funcionatility
-
-  editProduct(nameModal:string,item: Products) {
-
+  editProduct(nameModal: string, item: Products) {
     this.modalComponent.formEditProduct.patchValue({
       idProduct: item.idProduct,
       idCatBelong: item.idCatBelong,
@@ -66,17 +69,14 @@ export class DashboardComponent implements OnInit {
       stock: item.stock.toString(),
       available: item.available.toString()
     });
-
     this.openModal(nameModal);
   }
 
   deleteProduct(idProduct: string) {
     this._productService.deleteProductById(idProduct).subscribe(data => {
-      console.log(data)
+      console.log(data);
       //to refresh the table
       this.getProducts();
     });
   }
-
-
 }

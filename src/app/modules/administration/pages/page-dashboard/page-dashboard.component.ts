@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardCardsService, ICardsMenu } from '../../../../core/services/dashboard-cards.service';
 import { Products } from 'src/app/interfaces/products.interfaces';
@@ -48,6 +48,14 @@ openModal(nameModal: string) {
     modalDiv.style.display = 'block';
   }
 }
+onKeyDown(event: KeyboardEvent) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    const target = event.target as HTMLElement;
+    target.click();
+  }
+}
+
+
 
 
 //tables funcionatility
