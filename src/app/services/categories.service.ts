@@ -38,7 +38,7 @@ export class CategoriesService {
       tap(()=>{
           this.dataModifiedTable.next()
       })
-    );;
+    );
   }
 
   deleteCategory(idSup:string): Observable<any>{

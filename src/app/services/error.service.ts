@@ -1,6 +1,6 @@
 import { HttpErrorResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import { AsideEmployeeMenuService } from './../../core/services/aside-employee-menu.service';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { IAsideMenuEmployee } from './../../core/services/aside-employee-menu.service';
 import { Router } from '@angular/router';
 
@@ -8,24 +8,20 @@ import { Router } from '@angular/router';
   templateUrl: './aside-employee.component.html',
   styleUrls: ['./aside-employee.component.css']
 })
-export class AsideEmployeeComponent implements OnInit {
+export class AsideEmployeeComponent {
 
-  asideEmployeeMenuList:IAsideMenuEmployee[];
+  asideEmployeeMenuList: IAsideMenuEmployee[];
 
-  constructor(private _asideEmployeeMenuService: AsideEmployeeMenuService, private router:Router){
-    this.asideEmployeeMenuList=_asideEmployeeMenuService.getAsideMenuEmployee();
+  constructor(private _asideEmployeeMenuService: AsideEmployeeMenuService, private router: Router) {
+    this.asideEmployeeMenuList = _asideEmployeeMenuService.getAsideMenuEmployee();
   }
 
-  logout(){
-    const result= confirm("¿Estas seguro de salir de la aplicación?");
-    if(result){
+  logout() {
+    const result = confirm("¿Estas seguro de salir de la aplicación?");
+    if (result) {
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
     }
-  }
-
-  ngOnInit(): void {
-
   }
 
 }

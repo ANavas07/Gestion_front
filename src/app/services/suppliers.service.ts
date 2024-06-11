@@ -38,7 +38,7 @@ export class SuppliersService {
       tap(() => {
         this.dataModifiedTable.next()
       })
-    );;
+    );
   }
 
   deleteSuppliers(idSup: string): Observable<any> {

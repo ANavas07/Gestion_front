@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import {IAsideMenu,AsideMenuService} from '../../core/services/aside-menu.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './aside.component.html',
   styleUrls: ['./aside.component.css']
 })
-export class AsideComponent implements OnInit {
+export class AsideComponent {
 
   asideMenuList:IAsideMenu[];
 
@@ -23,8 +23,6 @@ export class AsideComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
 
-  }
 
 }
