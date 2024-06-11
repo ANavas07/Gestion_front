@@ -16,8 +16,8 @@
       <div
         *ngFor="let card of listCards"
         (click)="selectModalCard(card)"
-        (keyup.enter)="selectModalCard(card)" <!-- Agregar evento de teclado -->
-        tabindex="0" <!-- Hacer que el elemento sea focusable -->
+        (keyup.enter)="selectModalCard(card)"
+        tabindex="0" 
         class="col-md-3 mb-3 cardStyle"
       >
         <div class="card bg-{{ card.color }} text-{{ card.textColor }} h-100">
@@ -29,7 +29,8 @@
           </div>
         </div>
       </div>
-    </div>
+
+    
 
     <!-- la tabla esta en este row -->
     <div class="row">
@@ -92,4 +93,3 @@
       </div>
     </div>
   </div>
-</main>
