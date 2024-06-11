@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let card of listCards" (click)="selectModalCard(card)" class="col-md-3 mb-3 cardStyle">
+            <div *ngFor="let card of listCards" (click)="selectModalCard(card)" (keydown.enter)="selectModalCard(card)" tabindex="0" class="col-md-3 mb-3 cardStyle">
                 <div class="card bg-{{card.color}} text-{{card.textColor}} h-100">
                     <div class="card-body py-5 d-flex justify-content-between align-items-center">
                         <span class="material-symbols-sharp">{{card.icon}}</span>
@@ -50,12 +50,10 @@
                                         <td>{{item.lastNameUser}}</td>
                                         <td>{{item.userName}}</td>
                                         <td>
-                                            <button (click)="editUser('userModaledit', item)" type="button"
-                                                style="margin-right: 10px;" class="btn btn-primary">
+                                            <button (click)="editUser('userModaledit', item)" type="button" (keydown.enter)="editUser('userModaledit', item)" class="btn btn-primary" tabindex="0" style="margin-right: 10px;">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button (click)="deleteUser(item.dniUser)" type="button"
-                                                style="margin-left: 10px;" class="btn btn-danger">
+                                            <button (click)="deleteUser(item.dniUser)" type="button" (keydown.enter)="deleteUser(item.dniUser)" class="btn btn-danger" tabindex="0" style="margin-left: 10px;">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>

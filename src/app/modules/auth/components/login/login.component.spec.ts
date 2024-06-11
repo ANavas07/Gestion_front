@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import {UserService} from '../../../../services/user.service'
-import { UserLoginFields } from 'src/app/interfaces/user.interfaces';
 //Importaciones para pruebas
-import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-  let service:UserService;
+  let service: UserService;
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
+  let fixture: ComponentFixture<LoginComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
