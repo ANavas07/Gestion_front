@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { DashboardCardsService, ICardsMenu } from "../../../../core/services/dashboard-cards.service"
 import { Router } from '@angular/router';
 import { Suppliers } from 'src/app/interfaces/suppliers.interfaces';
@@ -14,7 +14,7 @@ import { ErrorService } from 'src/app/services/error.service';
   templateUrl: './suppliers.component.html',
   styleUrls: ['./suppliers.component.css']
 })
-export class SuppliersComponent {
+export class SuppliersComponent implements OnInit{
   //to have access to the modalComponent
   @ViewChild(ModalSupplierComponent) modalComponent!: ModalSupplierComponent;
 

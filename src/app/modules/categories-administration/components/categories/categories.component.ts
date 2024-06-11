@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DashboardCardsService, ICardsMenu } from 'src/app/core/services/dashboard-cards.service';
@@ -13,7 +13,7 @@ import { ModalCategoryComponent } from 'src/app/shared/modal-category/modal-cate
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent {
+export class CategoriesComponent  implements OnInit{
  //to have access to the modalComponent
   @ViewChild(ModalCategoryComponent) modalComponent!:ModalCategoryComponent;
 

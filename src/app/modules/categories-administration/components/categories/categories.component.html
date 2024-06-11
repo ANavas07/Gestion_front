@@ -16,6 +16,8 @@
       <div
         *ngFor="let card of listCards"
         (click)="selectModalCard(card)"
+        (keyup.enter)="selectModalCard(card)" <!-- Agregar evento de teclado -->
+        tabindex="0" <!-- Hacer que el elemento sea focusable -->
         class="col-md-3 mb-3 cardStyle"
       >
         <div class="card bg-{{ card.color }} text-{{ card.textColor }} h-100">
@@ -53,6 +55,7 @@
                     <th>Categoría ID</th>
                     <th>Nombre de la categoría</th>
                     <th>Descripción</th>
+                    <th>Acciones</th> <!-- Agregar columna Acciones -->
                   </tr>
                 </thead>
                 <tbody>
@@ -63,6 +66,7 @@
                     <td>
                       <button
                         (click)="editCategory('categoryEditModal', item)"
+                        (keyup.enter)="editCategory('categoryEditModal', item)"
                         type="button"
                         style="margin-right: 10px"
                         class="btn btn-primary"
@@ -71,6 +75,7 @@
                       </button>
                       <button
                         (click)="deleteCategory(item.idCat)"
+                        (keyup.enter)="deleteCategory(item.idCat)"
                         type="button"
                         style="margin-left: 10px"
                         class="btn btn-danger"

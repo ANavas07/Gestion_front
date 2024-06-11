@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import * as ApexCharts from 'apexcharts';
 
 import {
   ChartComponent,
@@ -36,7 +35,6 @@ export type ChartOptions = {
   legend: ApexLegend;
 };
 
-
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -49,7 +47,6 @@ export class ReportComponent implements OnInit {
   public chartOptionsStock: Partial<ChartOptions>;
   public chartOptions: Partial<ChartOptions>;
   public chartOptionsEarns: Partial<ChartOptions>;
-
 
   //list to save the data to fill in the charts
   //First Chart
@@ -64,9 +61,8 @@ export class ReportComponent implements OnInit {
   valuesOutputSorted: any[] = [];
   namesOutputSorted: any[] = [];
   //var amount
-  amountEarns:number=0;
-  amountInvest:number=0;
-
+  amountEarns:number = 0;
+  amountInvest:number = 0;
 
   constructor(private _productsService: ProductsService, private _registrationService: RegistrationProductService,
     private _outputService: OutputProductService) {
@@ -80,13 +76,12 @@ export class ReportComponent implements OnInit {
     //cards report to show totals
     this.dataEarns();
     this.dataInvest();
-    
   }
 
   //first chart
   dataProducts() {
     this._productsService.getProducts().subscribe(data => {
-      for (let value of (data as any).productsList) {
+      for (const value of (data as any).productsList) {
         // this.productsNameStock[value.productName]=value.stock;
         this.listProductsChartName.push(value.productName);
         this.listProductsChartStock.push(value.stock);
@@ -98,71 +93,68 @@ export class ReportComponent implements OnInit {
   dataRegister() {
     this._registrationService.getDataRegistrationFromDB().subscribe((data: any) => {
       // Convierte detailListRegistration en un array y ordena los datos por idProductBelong:
-      let detailList = Array.from(data.detailListRegistration as { idProductBelong: string, productQty: number }[]);
+      const detailList = Array.from(data.detailListRegistration as { idProductBelong: string, productQty: number }[]);
       detailList.sort((a, b) => a.idProductBelong.localeCompare(b.idProductBelong));
 
       // Ahora puedes procesar los datos ordenados en el bucle for:
-      for (let value of detailList) {
+      for (const value of detailList) {
         if (!this.listRegisterMap.has(value.idProductBelong)) {
           this.listRegisterMap.set(value.idProductBelong, value.productQty);
         } else {
-          let auxQty = this.listRegisterMap.get(value.idProductBelong);
+          const auxQty = this.listRegisterMap.get(value.idProductBelong);
           this.listRegisterMap.set(value.idProductBelong, (Number(value.productQty) + Number(auxQty)));
         }
       }
 
-      for (let [name, val] of this.listRegisterMap.entries()) {
+      for (const [name, val] of this.listRegisterMap.entries()) {
         this.namesRegisterSorted.push(name);
         this.valuesRegisterSorted.push(val);
       }
-
     })
   }
 
   dataOutput() {
     this._outputService.getDataOutputFromDB().subscribe((data: any) => {
       // Convierte detailListOutput en un array y ordena los datos por idProductBelong:
-      let detailList = Array.from(data.detailListOutput as { idProductBelong: string, productQty: number }[]);
+      const detailList = Array.from(data.detailListOutput as { idProductBelong: string, productQty: number }[]);
       detailList.sort((a, b) => a.idProductBelong.localeCompare(b.idProductBelong));
 
       // Ahora puedes procesar los datos ordenados en el bucle for:
-      for (let value of detailList) {
+      for (const value of detailList) {
         if (!this.listOutMap.has(value.idProductBelong)) {
           this.listOutMap.set(value.idProductBelong, value.productQty);
         } else {
-          let auxQty = this.listOutMap.get(value.idProductBelong);
+          const auxQty = this.listOutMap.get(value.idProductBelong);
           this.listOutMap.set(value.idProductBelong, (Number(value.productQty) + Number(auxQty)));
         }
       }
 
       //fill
-      for (let [name, val] of this.listOutMap.entries()) {
+      for (const [name, val] of this.listOutMap.entries()) {
         this.namesOutputSorted.push(name);
         this.valuesOutputSorted.push(val);
       }
-
     })
   }
 
-  dataEarns(){
-    this._outputService.getDataOutputFromDB().subscribe(data =>{
-        for(let value of (data as any).headerListOutput){
-          this.amountEarns+=value.totalCost;
-        }
+  dataEarns() {
+    this._outputService.getDataOutputFromDB().subscribe(data => {
+      for (const value of (data as any).headerListOutput) {
+        this.amountEarns += value.totalCost;
+      }
     });
   }
 
-  dataInvest(){
-    this._registrationService.getDataRegistrationFromDB().subscribe(data =>{
-        for(let value of (data as any).headerListRegistration){
-          this.amountInvest+=value.totalCost;
-        }
+  dataInvest() {
+    this._registrationService.getDataRegistrationFromDB().subscribe(data => {
+      for (const value of (data as any).headerListRegistration) {
+        this.amountInvest += value.totalCost;
+      }
     });
   }
 
   //charts
   ngOnInit(): void {
-
     this.chartOptionsStock = {
       series: [
         {
@@ -215,7 +207,7 @@ export class ReportComponent implements OnInit {
       },
       xaxis: {
         categories: this.namesRegisterSorted,
-        type:'category'
+        type: 'category'
       },
       yaxis: [
         {
@@ -323,13 +315,13 @@ export class ReportComponent implements OnInit {
         width: [1, 1, 4]
       },
       title: {
-        text: 'Analisis de ingreso y salida de productos',
+        text: 'Análisis de ingresos y salidas de productos',
         align: 'left',
         offsetX: 110
       },
       xaxis: {
         categories: this.namesRegisterSorted,
-        type:'category'
+        type: 'category'
       },
       yaxis: [
         {
@@ -413,7 +405,6 @@ export class ReportComponent implements OnInit {
         offsetX: 40
       }
     };
-
   }
-
 }
+

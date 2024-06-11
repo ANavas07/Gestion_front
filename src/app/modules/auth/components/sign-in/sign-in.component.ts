@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardCardsService, ICardsMenu } from '../../../../core/services/dashboard-cards.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +13,7 @@ import { ModalUserComponent } from 'src/app/shared/modal-user/modal-user.compone
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit{
   //to have access to the modalComponent
   @ViewChild(ModalUserComponent) modalComponent!: ModalUserComponent;
 

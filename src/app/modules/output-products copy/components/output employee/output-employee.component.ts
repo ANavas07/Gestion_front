@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { OutputProducts } from 'src/app/interfaces/output.interface';
@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './output-employee.component.html',
   styleUrls: ['./output-employee.component.css']
 })
-export class OutputEmployeeComponent {
+export class OutputEmployeeComponent implements OnInit{
 
 
   listUsers: User[] = [];
