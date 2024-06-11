@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar Proovedores</h5>
+                <h5 class="modal-title">Agregar Proveedores</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal('supplierModal')"></button>
             </div>
@@ -12,44 +12,41 @@
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
-                                <label class="col-form-label">Identificador Proveedor</label>
-                                <input type="text" formControlName="idSup" class="form-control">
+                                <label for="idSup" class="col-form-label">Identificador Proveedor</label>
+                                <input type="text" formControlName="idSup" class="form-control" id="idSup">
                                 <div class="alert alert-danger mt-1" [hidden]="idSup.valid || idSup.pristine">
                                     *No se permite caracteres extraños<br>
-                                    *El campo no puede estar vacio
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Nombre del proveedor</label>
-                                <input type="text" formControlName="nameSup" class="form-control">
+                                <label for="nameSup" class="col-form-label">Nombre del proveedor</label>
+                                <input type="text" formControlName="nameSup" class="form-control" id="nameSup">
                                 <div class="alert alert-danger mt-1" [hidden]="nameSup.valid || nameSup.pristine">
                                     *No se permite caracteres extraños<br>
-                                    *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Numero telefonico</label>
-                                <input type="text" formControlName="phoneSup" class="form-control">
+                                <label for="phoneSup" class="col-form-label">Número telefónico</label>
+                                <input type="text" formControlName="phoneSup" class="form-control" id="phoneSup">
                                 <div class="alert alert-danger mt-1" [hidden]="phoneSup.valid || phoneSup.pristine">
-                                    *Longitud maxima de 17 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Longitud máxima de 17 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Dirección</label>
-                                <input type="text" formControlName="addressSup" class="form-control">
+                                <label for="addressSup" class="col-form-label">Dirección</label>
+                                <input type="text" formControlName="addressSup" class="form-control" id="addressSup">
                                 <div class="alert alert-danger mt-1" [hidden]="addressSup.valid || addressSup.pristine">
-                                    *La direccion no puede tener más de 25 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *La dirección no puede tener más de 25 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Email</label>
-                                <input type="text" formControlName="emailSup" class="form-control">
+                                <label for="emailSup" class="col-form-label">Email</label>
+                                <input type="text" formControlName="emailSup" class="form-control" id="emailSup">
                                 <div class="alert alert-danger mt-1" [hidden]="emailSup.valid || emailSup.pristine">
-                                    El formato del correo debe texto&#64;direccion.com
+                                    El formato del correo debe ser texto&#64;direccion.com
                                 </div>
                                 <br>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
                 <div class="modal-footer">
                     <button class="btn btn-danger" type="button" (click)="closeModal('supplierModal')">Cerrar</button>
                     <button class="btn btn-primary" type="submit" [disabled]="formAddSupplier.invalid">Guardar</button>
@@ -64,7 +61,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Proovedores</h5>
+                <h5 class="modal-title">Editar Proveedores</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal('supplierEditModal')"></button>
             </div>
@@ -74,44 +71,40 @@
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
-                                <label class="col-form-label">Identificador Proveedor</label>
-                                <input type="text" formControlName="idSup" class="form-control">
-                                <label class="col-form-label">Nombre del proveedor</label>
-                                <input type="text" formControlName="nameSup" class="form-control">
+                                <label for="idSupEdit" class="col-form-label">Identificador Proveedor</label>
+                                <input type="text" formControlName="idSup" class="form-control" id="idSupEdit">
+                                <label for="nameSupEdit" class="col-form-label">Nombre del proveedor</label>
+                                <input type="text" formControlName="nameSup" class="form-control" id="nameSupEdit">
                                 <div class="alert alert-danger mt-1" [hidden]="nameSupEdit.valid || nameSupEdit.pristine">
-                                   *No se permite caracteres extraños<br>
-                                   *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *No se permite caracteres extraños<br>
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Numero telefonico</label>
-                                <input type="text" formControlName="phoneSup" class="form-control">
+                                <label for="phoneSupEdit" class="col-form-label">Número telefónico</label>
+                                <input type="text" formControlName="phoneSup" class="form-control" id="phoneSupEdit">
                                 <div class="alert alert-danger mt-1" [hidden]="phoneSupEdit.valid || phoneSupEdit.pristine">
-                                    *Longitud maxima de 17 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Longitud máxima de 17 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Dirección</label>
-                                <input type="text" formControlName="addressSup" class="form-control">
+                                <label for="addressSupEdit" class="col-form-label">Dirección</label>
+                                <input type="text" formControlName="addressSup" class="form-control" id="addressSupEdit">
                                 <div class="alert alert-danger mt-1" [hidden]="addressSupEdit.valid || addressSupEdit.pristine">
-                                    *La direccion no puede tener más de 25 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *La dirección no puede tener más de 25 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Email</label>
-                                <input type="text" formControlName="emailSup" class="form-control">
+                                <label for="emailSupEdit" class="col-form-label">Email</label>
+                                <input type="text" formControlName="emailSup" class="form-control" id="emailSupEdit">
                                 <div class="alert alert-danger mt-1"
                                     [hidden]="emailSupEdit.valid || emailSupEdit.pristine">
-                                    El formato del correo debe texto&#64;direccion.com
+                                    El formato del correo debe ser texto&#64;direccion.com
                                 </div>
                                 <br>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
                 <div class="modal-footer">
-                    <button class="btn btn-danger" type="button"
-                        (click)="closeModal('supplierEditModal')">Cerrar</button>
+                    <button class="btn btn-danger" type="button" (click)="closeModal('supplierEditModal')">Cerrar</button>
                     <button class="btn btn-primary" type="submit" [disabled]="formEditSupplier.invalid">Guardar</button>
                 </div>
             </form>

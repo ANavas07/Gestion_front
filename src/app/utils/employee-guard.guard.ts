@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 
-export const employeeGuard: CanActivateFn = (route, state) => {
+export const employeeGuard: CanActivateFn = () => {
   const router = inject(Router);
   const toastr = inject(ToastrService);
 
