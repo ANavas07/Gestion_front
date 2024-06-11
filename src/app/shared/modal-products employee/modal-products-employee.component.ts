@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './modal-products-employee.component.html',
   styleUrls: ['./modal-products-employee.component.css']
 })
-export class ModalProductsEmployeeComponent {
+export class ModalProductsEmployeeComponent implements OnInit{
 
   listCategories:Categories[]=[]
 

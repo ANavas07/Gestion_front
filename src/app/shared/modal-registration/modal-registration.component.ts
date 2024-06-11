@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // Implement OnInit
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +13,7 @@ import { RegistrationProductService } from 'src/app/services/registration-produc
   templateUrl: './modal-registration.component.html',
   styleUrls: ['./modal-registration.component.css']
 })
-export class ModalRegistrationComponent {
+export class ModalRegistrationComponent implements OnInit { // Add OnInit
 
   listProducts: Products[] = [];
 
@@ -22,7 +22,6 @@ export class ModalRegistrationComponent {
   constructor(private toastr: ToastrService, private _registrationService: RegistrationProductService,
     private router: Router, private _errorService: ErrorService,
     private _productService: ProductsService) { }
-
 
   ngOnInit(): void {
     this.getProductsToFillDataList();
@@ -39,25 +38,23 @@ export class ModalRegistrationComponent {
   }
 
   getProductsToFillDataList() {
-
     this._productService.getProducts().subscribe(data => {
       this.listProducts = (data as any).productsList;
     })
-
   }
 
   formAddProductRegistration = new FormGroup({
     "idProduct": new FormControl('', Validators.required),
-    "quantity": new FormControl('', [Validators.required,Validators.min(1), Validators.max(5000), Validators.pattern(/^\d+$/)]),
+    "quantity": new FormControl('', [Validators.required, Validators.min(1), Validators.max(5000), Validators.pattern(/^\d+$/)]),
   });
 
-  addRegistrationProduct(modalName: string) {
+  addRegistrationProduct() { // Remove modalName parameter
     const product: any = {
       idProductBelong: this.formAddProductRegistration.get('idProduct')?.value || '',
       productQty: (this.formAddProductRegistration.get('quantity')?.value || 0) as number
     }
 
-    let idProductList = this.controlListRegistration.map(product => product.idProductBelong);
+    const idProductList = this.controlListRegistration.map(product => product.idProductBelong); // Change let to const
 
     if (idProductList.includes(product.idProductBelong)) {
       this.toastr.error(`${product.idProductBelong} Esta repetido`, "Error!");
@@ -66,7 +63,6 @@ export class ModalRegistrationComponent {
       this._registrationService.addProductRegistration(product);
       this.closeModal('ProductRegistrationModal');
     }
-
   }
 
   closeModal(name: string) {
@@ -76,6 +72,4 @@ export class ModalRegistrationComponent {
       this.formAddProductRegistration.reset();
     }
   }
-
-
 }

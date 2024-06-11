@@ -3,8 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Agregar Productos</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="closeModal('ProductModal')"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('ProductModal')"></button>
             </div>
             <form [formGroup]="formAddProduct" (ngSubmit)="addProducts('ProductModal')">
                 <div class="modal-body">
@@ -12,59 +11,56 @@
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
-                                <label class="col-form-label">Identificador Producto</label>
-                                <input type="text" formControlName="idProduct" class="form-control">
+                                <label for="idProduct" class="col-form-label">Identificador Producto</label>
+                                <input id="idProduct" type="text" formControlName="idProduct" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="idProduct.valid || idProduct.pristine">
                                     *No se aceptan caracteres extraños <br>
                                     *Longitud de caracteres maximo de 7 <br>
                                     *El campo no puede estar vacio
                                 </div>
+                                
                                 <!-- Datalist -->
-                                <label for="exampleDataList" class="form-label">Categoria</label>
-                                <input class="form-control" formControlName="idCatBelong" list="datalistOptions"
-                                    id="exampleDataList" placeholder="Busqueda">
+                                <label for="idCatBelong" class="form-label">Categoria</label>
+                                <input id="idCatBelong" class="form-control" formControlName="idCatBelong" list="datalistOptions" placeholder="Busqueda">
                                 <datalist id="datalistOptions">
                                     <option *ngFor="let category of listCategories" [value]="category.idCat">
                                         {{category.nameCat}}
                                 </datalist>
                                 <!--  Datalist -->
 
-                                <label class="col-form-label">Nombre</label>
-                                <input type="text" formControlName="productName" class="form-control">
-                                <div class="alert alert-danger mt-1"
-                                    [hidden]="productName.valid || productName.pristine">
+                                <label for="productName" class="col-form-label">Nombre</label>
+                                <input id="productName" type="text" formControlName="productName" class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="productName.valid || productName.pristine">
                                     *No se aceptan caracteres extraños<br>
                                     *Longitud maxima de 20 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
-                                <label class="col-form-label">Precio</label>
-                                <input type="text" formControlName="productPrice" class="form-control">
-                                <div class="alert alert-danger mt-1"
-                                    [hidden]="productPrice.valid || productPrice.pristine">
+                                
+                                <label for="productPrice" class="col-form-label">Precio</label>
+                                <input id="productPrice" type="text" formControlName="productPrice" class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="productPrice.valid || productPrice.pristine">
                                     *El precio del producto debe estar comprendido entre 1 y 1000<br>
                                     *Solo se permiten cantidades<br>
                                     *El campo no puede estar vacio
                                 </div>
-                                <label class="col-form-label">Existencias</label>
-                                <input type="text" formControlName="stock" class="form-control">
-                                <div class="alert alert-danger mt-1"
-                                    [hidden]="stock.valid || stock.pristine">
+                                
+                                <label for="stock" class="col-form-label">Existencias</label>
+                                <input id="stock" type="text" formControlName="stock" class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="stock.valid || stock.pristine">
                                     *Numero de existencias permitidas 0 y 5000<br>
                                     *Solo se permiten cantidades<br>
                                     *El campo no puede estar vacio
                                 </div>
-                                <label class="col-form-label">Disponibilidad</label>
-                                <select formControlName="available" class="form-select form-select-sm"
-                                    aria-label="Small select example">
+                                
+                                <label for="available" class="col-form-label">Disponibilidad</label>
+                                <select id="available" formControlName="available" class="form-select form-select-sm" aria-label="Small select example">
                                     <option value="true">Disponible</option>
                                     <option value="false">No disponible</option>
                                 </select>
                                 <br>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
 
                 <div class="modal-footer">
@@ -82,8 +78,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar Producto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="closeModal('ProductEditModal')"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('ProductEditModal')"></button>
             </div>
             <form [formGroup]="formEditProduct" (ngSubmit)="editproduct('ProductEditModal')">
                 <div class="modal-body">
@@ -91,60 +86,55 @@
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
-                                <label class="col-form-label">Identificador Producto</label>
-                                <input type="text" formControlName="idProduct" class="form-control">
-
+                                <label for="idProductEdit" class="col-form-label">Identificador Producto</label>
+                                <input id="idProductEdit" type="text" formControlName="idProduct" class="form-control">
+                                
                                 <!-- Datalist -->
-                                <label for="exampleDataList" class="form-label">Categoria</label>
-                                <input class="form-control" formControlName="idCatBelong" list="datalistOptions"
-                                    id="exampleDataList" placeholder="Busqueda">
-                                <datalist id="datalistOptions">
+                                <label for="idCatBelongEdit" class="form-label">Categoria</label>
+                                <input id="idCatBelongEdit" class="form-control" formControlName="idCatBelong" list="datalistOptionsEdit" placeholder="Busqueda">
+                                <datalist id="datalistOptionsEdit">
                                     <option *ngFor="let category of listCategories" [value]="category.idCat">
                                         {{category.nameCat}}
                                 </datalist>
                                 <!--  Datalist -->
 
-                                <label class="col-form-label">Nombre</label>
-                                <input type="text" formControlName="productName" class="form-control">
-                                <div class="alert alert-danger mt-1"
-                                    [hidden]="productNameEdit.valid || productNameEdit.pristine">
+                                <label for="productNameEdit" class="col-form-label">Nombre</label>
+                                <input id="productNameEdit" type="text" formControlName="productName" class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="productNameEdit.valid || productNameEdit.pristine">
                                     *No se aceptan caracteres extraños<br>
                                     *Longitud maxima de 20 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
-                                <label class="col-form-label">Precio</label>
-                                <input type="text" formControlName="productPrice" class="form-control">
-                                <div class="alert alert-danger mt-1"
-                                    [hidden]="productPriceEdit.valid || productPriceEdit.pristine">
-                                    *El precio del producto debe estar comprendido entre 1 y 1000
-                                    *Solo se permiten cantidades
+                                
+                                <label for="productPriceEdit" class="col-form-label">Precio</label>
+                                <input id="productPriceEdit" type="text" formControlName="productPrice" class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="productPriceEdit.valid || productPriceEdit.pristine">
+                                    *El precio del producto debe estar comprendido entre 1 y 1000<br>
+                                    *Solo se permiten cantidades<br>
                                     *El campo no puede estar vacio
                                 </div>
-                                <label class="col-form-label">Existencias</label>
-                                <input type="text" formControlName="stock" class="form-control">
-                                <div class="alert alert-danger mt-1"
-                                    [hidden]="stockEdit.valid || stockEdit.pristine">
-                                    *Numero de existencias permitidas 0 y 5000
-                                    *Solo se permiten cantidades
+                                
+                                <label for="stockEdit" class="col-form-label">Existencias</label>
+                                <input id="stockEdit" type="text" formControlName="stock" class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="stockEdit.valid || stockEdit.pristine">
+                                    *Numero de existencias permitidas 0 y 5000<br>
+                                    *Solo se permiten cantidades<br>
                                     *El campo no puede estar vacio
                                 </div>
-                                <label class="col-form-label">Disponibilidad</label>
-                                <select formControlName="available" class="form-select form-select-sm"
-                                    aria-label="Small select example">
+                                
+                                <label for="availableEdit" class="col-form-label">Disponibilidad</label>
+                                <select id="availableEdit" formControlName="available" class="form-select form-select-sm" aria-label="Small select example">
                                     <option value="true">Disponible</option>
                                     <option value="false">No disponible</option>
                                 </select>
                                 <br>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-danger" type="button"
-                        (click)="closeModal('ProductEditModal')">Cerrar</button>
+                    <button class="btn btn-danger" type="button" (click)="closeModal('ProductEditModal')">Cerrar</button>
                     <button class="btn btn-primary" type="submit" [disabled]="formEditProduct.invalid">Guardar</button>
                 </div>
             </form>

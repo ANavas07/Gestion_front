@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +13,7 @@ import { RegistrationProductService } from 'src/app/services/registration-produc
   templateUrl: './modal-registration-employee.component.html',
   styleUrls: ['./modal-registration-employee.component.css']
 })
-export class ModalRegistrationEmployeeComponent {
+export class ModalRegistrationEmployeeComponent implements OnInit {
 
   listProducts: Products[] = [];
 
@@ -23,41 +23,37 @@ export class ModalRegistrationEmployeeComponent {
     private router: Router, private _errorService: ErrorService,
     private _productService: ProductsService) { }
 
-
   ngOnInit(): void {
     this.getProductsToFillDataList();
 
     this._productService.dataModifiedTable.subscribe(() => {
-      this.getProductsToFillDataList()
-    })
+      this.getProductsToFillDataList();
+    });
 
     this._registrationService.getProductRegistrationList().subscribe(productRegistrationList => {
       this.controlListRegistration = productRegistrationList;
-      console.log(this.controlListRegistration)
-    })
-
+      console.log(this.controlListRegistration);
+    });
   }
 
   getProductsToFillDataList() {
-
     this._productService.getProducts().subscribe(data => {
       this.listProducts = (data as any).productsList;
-    })
-
+    });
   }
 
   formAddProductRegistration = new FormGroup({
     "idProduct": new FormControl('', Validators.required),
-    "quantity": new FormControl('', [Validators.required,Validators.min(1), Validators.max(5000), Validators.pattern(/^\d+$/)]),
+    "quantity": new FormControl('', [Validators.required, Validators.min(1), Validators.max(5000), Validators.pattern(/^\d+$/)]),
   });
 
-  addRegistrationProduct(modalName: string) {
+  addRegistrationProduct() {
     const product: any = {
       idProductBelong: this.formAddProductRegistration.get('idProduct')?.value || '',
       productQty: (this.formAddProductRegistration.get('quantity')?.value || 0) as number
-    }
+    };
 
-    let idProductList = this.controlListRegistration.map(product => product.idProductBelong);
+    const idProductList = this.controlListRegistration.map(product => product.idProductBelong);
 
     if (idProductList.includes(product.idProductBelong)) {
       this.toastr.error(`${product.idProductBelong} Esta repetido`, "Error!");
@@ -66,7 +62,6 @@ export class ModalRegistrationEmployeeComponent {
       this._registrationService.addProductRegistration(product);
       this.closeModal('ProductRegistrationModal');
     }
-
   }
 
   closeModal(name: string) {
@@ -76,6 +71,4 @@ export class ModalRegistrationEmployeeComponent {
       this.formAddProductRegistration.reset();
     }
   }
-
-
 }

@@ -6,30 +6,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal('ProductRegistrationModal')"></button>
             </div>
-            <form [formGroup]="formAddProductRegistration" (ngSubmit)="addRegistrationProduct('ProductRegistrationModal')">
+            <form [formGroup]="formAddProductRegistration" (ngSubmit)="addRegistrationProduct()">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
                                 <!-- Datalist -->
-                                <label for="exampleDataList" class="form-label">Identificador Producto</label>
-                                <input class="form-control" formControlName="idProduct" list="datalistOptions" id="exampleDataList"
+                                <label for="idProduct" class="form-label">Identificador Producto</label>
+                                <input class="form-control" formControlName="idProduct" list="datalistOptions" id="idProduct"
                                     placeholder="Busqueda">
                                 <datalist id="datalistOptions">
                                     <option *ngFor="let product of listProducts" [value]="product.idProduct">{{product.productName}}
                                 </datalist>
                                 <!--  Datalist -->
-                                <label class="col-form-label">Cantidad</label>
-                                <input type="text" formControlName="quantity" class="form-control">   
+                                <label for="quantity" class="col-form-label">Cantidad</label>
+                                <input type="text" formControlName="quantity" class="form-control" id="quantity">   
                                 <br>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
                 <div class="modal-footer">
                     <button class="btn btn-danger" type="button" (click)="closeModal('ProductRegistrationModal')">Cerrar</button>
                     <button class="btn btn-primary" type="submit" [disabled]="formAddProductRegistration.invalid">Guardar</button>
